@@ -1,0 +1,23 @@
+schemaVersion: 2.2.0
+metadata:
+  name: ubuntu-devspace
+components:
+  - name: ubuntu
+    container:
+      image: ubuntu:22.04
+      memoryLimit: "80Gi"
+      cpuLimit: "32"
+      command: ["sleep"]
+      args: ["infinity"]
+      mountSources: true
+commands:
+  - id: init
+    exec:
+      component: ubuntu
+      commandLine: |
+        apt update && apt install -y sudo curl wget git neofetch && \
+        echo "user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+      workingDir: /projects
+      group:
+        kind: build
+        isDefault: true
