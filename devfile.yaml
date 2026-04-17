@@ -5,8 +5,8 @@ components:
   - name: ubuntu
     container:
       image: ubuntu:22.04
-      memoryLimit: "80Gi"
-      cpuLimit: "32"
+      memoryLimit: "30Gi"
+      cpuLimit: "3"
       command: ["sleep"]
       args: ["infinity"]
       mountSources: true
